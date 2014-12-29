@@ -7,12 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default" role="navigation">
-    <!-- <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">Tealeaf Todo</a>
-      </div>
-    </div> -->
+  <nav class="navbar navbar-fixed" role="navigation">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav navbar-right" >
+        <li><%= link_to("Upload photo", new_photo_path) %></li>
+      </ul>
+    </div>
   </nav>
   
   <%= yield %>

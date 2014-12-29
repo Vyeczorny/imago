@@ -45,5 +45,6 @@ group :development, :test do
   gem 'devise'
   gem 'bootstrap-sass'
   gem 'autoprefixer-rails'
+  gem 'paperclip'
 end
 
