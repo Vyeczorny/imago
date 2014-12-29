@@ -1,5 +1,17 @@
-<h1>User profile</h1>
-<p> First name: <%= @user.first_name %> </p>
-<p> Last name: <%= @user.last_name %> </p>
-<p> Email: <%= @user.email %> </p>
-<p> Login: <%= @user.login %> </p>
+<div class="container" style="background-image: url(http://goo.gl/Gdtq2h); padding: 20px">
+  <%= image_tag("http://www.scified.com/sites_pics/225863765985620.jpg", size: "200x200") %>
+  <h2>
+    <%= @user.first_name + " " + @user.last_name %>
+  </h2>
+  <h4>
+    <%= @user.email %>
+  </h4>
+</div>
+
+<div class="container" style="padding: 0px">
+  <ul class="nav nav-tabs nav-justified" role="tablist">
+    <li><%= link_to 'Uploaded images', "/" %></li>
+    <li><%= link_to 'Favourites', "/" %></li>
+    <li class="active"><%= link_to 'Upload new image', "/" %></li>
+  </ul>
+</div>
