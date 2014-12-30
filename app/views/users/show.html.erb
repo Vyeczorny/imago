@@ -1,3 +1,19 @@
+<style type="text/css">
+  ul {         
+    padding:0 0 0 0;
+    margin:0 0 0 0;
+  }
+
+  ul li {     
+    list-style:none;
+    margin-bottom:25px;           
+  }
+
+  ul li img {
+    cursor: pointer;
+  }
+</style>
+
 <div class="container" style="background-image: url(http://goo.gl/Gdtq2h); padding: 20px">
   <%= image_tag("http://www.scified.com/sites_pics/225863765985620.jpg", size: "200x200") %>
   <h2>
@@ -12,5 +28,21 @@
   <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="active"><%= link_to 'Uploaded images', "/" %></li>
     <li><%= link_to 'Favourites', "/" %></li>
+  </ul>
+</div>
+
+<div class="container" style="padding: 10px">
+  <ul class="row">
+    <% @user.photos.each do |photo| %>
+      <li class="col-lg-3 col-md-3 col-sm-4  col-xs-4">
+        <div class="thumbnail" style="padding: 8px">
+          <%= image_tag(photo.photo.url(:thumb), :style => "height: 200px") %>
+          <div class="caption">
+            <h3><%= photo.title %></h3>
+            <div style="height: 100px; overflow: hidden"><%= photo.description %></div>
+          </div>
+        </div>
+      </li>
+    <% end %>
   </ul>
 </div>

@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
     @photo.user = current_user
     if @photo.save
       flash[:notice] = "Successfully created product."
-      redirect_to :action => :new
+      redirect_to user_path(@photo.user)
     else
       render :action => 'new'
     end
