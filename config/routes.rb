@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, :photos
+  resources :users
+  resources :photos do
+    resources :comments
+  end
 
   # root to: "home#show"
   get 'users/show'
