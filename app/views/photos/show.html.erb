@@ -1,50 +1,48 @@
 <div class="container">
-  <h2 style="text-align: center">
-    <%= @photo.title %>
-  </h2>
 
   <%= image_tag(@photo.photo.url, :class => "img-responsive") %>
 
-  <div class="well">
-    <h4>Leave a Comment:</h4>
+  <div class="page-header">
+  <!-- <hr> -->
+  <h2> <%= @photo.title %> </h2>
+  <h5> <%= @photo.description %> </h5>
+  <!-- <hr> -->
+  </div>
+
+  <h4>Komentarze</h4>
+
+  <% if @photo.comments.count == 0 then %>
+    <h5>Nikt jeszcze nie skomentował tego zdjęcia, bądź pierwszy!</h5>
+  <% else %>
+    <% @photo.comments.each do |comment| %>
+      <div class="media">
+        <div class="media-left">
+          <%= image_tag(comment.user.avatar, size: "48x48") %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"> 
+            <%= comment.user.login %> 
+            <small> <%= comment.created_at.to_s(:long) %> </small>
+          </h4>
+          <%= comment.content %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="well" style="margin-top: 1cm">
+    <h4>Napisz komentarz</h4>
     <%= form_for [@photo, Comment.new] do |f| %>
     <div class="input-group">
       <span class="input-group-addon"> 
-        <%= image_tag(current_user.avatar, size: "48x48", align: "top") %>  
+        <%= image_tag(current_user.avatar, size: "40x40", align: "top") %>  
       </span>
-      <%= f.text_area(:content, class: "form-control", rows: "4") %>
+      <%= f.text_area(:content, class: "form-control", rows: "2") %>
     </div>
     <%= f.submit("Submit", class: "btn btn-primary") %>
     <% end %>
   </div>
 
   <hr>
-
-  <% @photo.comments.each do |comment| %>
-    <div class="media">
-      <div class="media-left">
-        <%= image_tag(comment.user.avatar, size: "48x48") %>
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading"> 
-          <%= comment.user.login %> 
-          <small> <%= comment.created_at %> </small>
-        </h4>
-        <%= comment.content %>
-      </div>
-    </div>
-  <% end %>
-
-  <!-- <div class="media">
-  <a class="media-left" href="#">
-      <img class="media-object" src="http://placehold.it/64x64" alt="">
-    </a>
-    <div class="media-body">
-      <h4 class="media-heading">Start Bootstrap
-        <small>August 25, 2014 at 9:30 PM</small>
-      </h4>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-    </div>
-  </div> -->
 
 </div>
