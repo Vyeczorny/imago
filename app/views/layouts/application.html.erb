@@ -6,12 +6,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <nav class="navbar navbar-fixed" role="navigation">
+<body style="padding-top:60px">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" style="height: 30px" role="navigation">
     <div class="container-fluid">
-      <ul class="nav navbar-nav navbar-right" >
+      <div class="nav navbar-nav navbar-right" >
         <li><%= link_to("Upload photo", new_photo_path) %></li>
-      </ul>
+        <% if current_user != nil then %>
+          <li><%= link_to("Logout", destroy_user_session_path) %></li>
+          <li><%= link_to(image_tag(current_user.avatar, class: "img-thumbnail", size: "48x48"), user_path(current_user)) %></li>
+        <% else %>
+          <li>Login</li>
+        <% end %>
+      </div>
     </div>
   </nav>
   
