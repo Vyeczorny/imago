@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   validates :login, uniqueness: true, allow_blank: false
 
   has_many :photos
+  has_many :comments
 end
