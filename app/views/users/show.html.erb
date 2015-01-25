@@ -15,7 +15,7 @@
 </style>
 
 <div class="container" style="background-image: url(http://goo.gl/Gdtq2h); padding: 20px">
-  <%= image_tag("http://www.scified.com/sites_pics/225863765985620.jpg", size: "200x200") %>
+  <%= image_tag(@user.avatar.url(:thumb), size: "200x200") %>
   <h2>
     <%= @user.first_name + " " + @user.last_name %>
   </h2>
